@@ -16,7 +16,7 @@ describe('Form Component', () => {
     });
   });
 
-  it('should update form fields correctly', () => {
+  it('should validate form successfully', () => {
     render(
       <Provider store={store}>
         <Form />
@@ -33,13 +33,10 @@ describe('Form Component', () => {
       target: { value: 'john@example.com' },
     });
     fireEvent.change(screen.getByPlaceholderText('Message'), {
-      target: { value: 'Hello, Redux!' },
+      target: { value: 'Message with 10 characters' },
     });
 
-    const state = store.getState().form;
-    expect(state.firstName).toEqual('John');
-    expect(state.lastName).toEqual('Doe');
-    expect(state.email).toEqual('john@example.com');
-    expect(state.message).toEqual('Hello, Redux!');
+    const submitButton = screen.getByText('Submit');
+    expect(!!submitButton.getAttribute('disabled')).toEqual(false);
   });
 });

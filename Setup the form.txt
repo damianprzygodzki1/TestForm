@@ -1,0 +1,101 @@
+Generate business style CSS for form
+
+ChatGPT
+Certainly, here's an example of business-style CSS for a form. This CSS aims to create a clean and professional appearance for your form elements:
+
+css
+Copy code
+/* Reset default form styles */
+form {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* Form container */
+.form-container {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form headings */
+.form-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Form input fields */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.form-input:focus {
+  border-color: #3498db;
+}
+
+/* Form submit button */
+.form-submit {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #3498db;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.form-submit:hover {
+  background-color: #2980b9;
+}
+
+/* Form success message */
+.form-success {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 14px;
+  color: #27ae60;
+  background-color: #e1f7d4;
+  border: 1px solid #a3d39c;
+  border-radius: 5px;
+}
+
+/* Form error message */
+.form-error {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 14px;
+  color: #e74c3c;
+  background-color: #f9d9d9;
+  border: 1px solid #e39494;
+  border-radius: 5px;
+}
+You can apply this CSS to your HTML form by linking the stylesheet or embedding it directly into your HTML document. Make sure to customize the class names, colors, and sizes according to your design preferences.

@@ -33,4 +33,4 @@ const updateFormAction = ({field, value}) => ({
   }
 })
 
-export {store, formReducer, updateFormAction};
+export {store, initialState, formReducer, updateFormAction};
