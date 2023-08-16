@@ -1,27 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { initialState, updateFormAction } from "../store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../../store/store";
 import { isEmail, isLength } from "validator";
 import styles from "./Form.module.css";
 
 function Form() {
-  const formState = useSelector((state) => state.form);
+  const initialState = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
+  };
+
   const [formData, setFormData] = useState(initialState);
   const [validationErrors, setValidationErrors] = useState([]);
   const dispatch = useDispatch();
-
-  const isValid = Object.keys(validationErrors).length === 0;
+  const list = useSelector((state) => state.list.list);
+  const isValid = validationErrors.length === 0;
 
   useEffect(() => {
     validateForm();
-  }, []);
+  }, [formData]);
 
   const handleChange = (field, value) => {
-    validateForm();
     setFormData({
       ...formData,
       [field]: value,
     });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addItem(formData));
+    setFormData(initialState);
   };
 
   const validateForm = () => {
@@ -37,23 +48,24 @@ function Form() {
     setValidationErrors(formValidationResult);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(updateFormAction(formState));
-  };
-
   const validate = (field, value) => {
     switch (field) {
       case "firstName":
-        break;
+        if (!value) return "FirstName required";
+        return list.some((entry) => entry.firstName === value)
+          ? "Existing first name"
+          : undefined;
       case "lastName":
-        break;
+        if (!value) return "LastName required";
+        return list.some((entry) => entry.lastName === value)
+          ? "Existing last name"
+          : undefined;
       case "email":
-        return !isEmail(value) ? "Not valid email" : false;
+        return !isEmail(value) ? "Not valid email" : undefined;
       case "message":
         return !isLength(value, { min: 10, max: undefined })
           ? "Minimum length is 10 chars"
-          : false;
+          : undefined;
       default:
         return undefined;
     }
@@ -96,6 +108,11 @@ function Form() {
         >
           Submit
         </button>
+        {validationErrors.map((error) => (
+          <div className={styles["form-error"]} key={error} data-testid="error">
+            {error}
+          </div>
+        ))}
       </form>
     </div>
   );

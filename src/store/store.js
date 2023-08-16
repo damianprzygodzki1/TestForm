@@ -1,18 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 
 const initialState = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  message: '',
+  list: [],
 };
 
-const formReducer = (state = initialState, action) => {
+const listReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'UPDATE_FIELD':
+    case "ADD_ITEM":
       return {
         ...state,
-        [action.payload.field]: action.payload.value
+        list: [...state.list, action.payload],
       };
     default:
       return state;
@@ -21,16 +18,13 @@ const formReducer = (state = initialState, action) => {
 
 const store = configureStore({
   reducer: {
-    form: formReducer,
+    list: listReducer,
   },
 });
 
-const updateFormAction = ({field, value}) => ({
-  type: 'UPDATE_FIELD',
-  payload: {
-    field,
-    value
-  }
-})
+const addItem = (payload) => ({
+  type: "ADD_ITEM",
+  payload,
+});
 
-export {store, initialState, formReducer, updateFormAction};
+export { store, listReducer, addItem };

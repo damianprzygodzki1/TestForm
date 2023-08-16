@@ -1,27 +1,28 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { formReducer, updateFormAction } from './store';
+import { configureStore } from "@reduxjs/toolkit";
+import { addItem, listReducer } from "./store";
 
-describe('Redux Store and Reducers', () => {
+describe("Redux Store and Reducers", () => {
   let store;
 
   beforeEach(() => {
     store = configureStore({
       reducer: {
-        form: formReducer,
+        list: listReducer,
       },
     });
   });
 
-  it('should update fields in the form store', () => {
-    store.dispatch(updateFormAction({ field: 'firstName', value: 'John' }));
-    store.dispatch(updateFormAction({ field: 'lastName', value: 'Doe' }));
-    store.dispatch(updateFormAction({ field: 'email', value: 'john@example.com' }));
-    store.dispatch(updateFormAction({ field: 'message', value: 'Hello, Redux!' }));
+  it("should update fields in the form store", () => {
+    store.dispatch(
+      addItem({
+        firstName: "John",
+        lastName: "Doe",
+        email: "john@example.com",
+        message: "Hello, Redux!",
+      })
+    );
 
-    const state = store.getState().form;
-    expect(state.firstName).toEqual('John');
-    expect(state.lastName).toEqual('Doe');
-    expect(state.email).toEqual('john@example.com');
-    expect(state.message).toEqual('Hello, Redux!');
+    const state = store.getState().list;
+    expect(state.list).toHaveLength(1);
   });
 });

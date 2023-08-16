@@ -1,0 +1,32 @@
+table {
+    width: 600px;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    margin: 20px auto;
+  }
+  
+thead {
+    background-color: #f2f2f2;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #e0e0e0;
+}
+
+td:first-child {
+    text-align: center;
+}

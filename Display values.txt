@@ -1,0 +1,146 @@
+Generate React component with table for values "First name", "Last name", "E-mail", "Message"
+
+ChatGPT
+Sure, here's an example of a React component that includes a table with the specified columns: "First name", "Last name", "E-mail", and "Message".
+
+jsx
+Copy code
+import React from 'react';
+
+const TableComponent = ({ data }) => {
+  return (
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>E-mail</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, index) => (
+            <tr key={index}>
+              <td>{item.firstName}</td>
+              <td>{item.lastName}</td>
+              <td>{item.email}</td>
+              <td>{item.message}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default TableComponent;
+In this example, the TableComponent accepts an array of objects as a prop named data. Each object in the data array should have properties: firstName, lastName, email, and message. The component maps over the data array and generates table rows for each object.
+
+To use this component, you can import it and pass the data array as a prop:
+
+jsx
+Copy code
+import React from 'react';
+import TableComponent from './TableComponent'; // Adjust the path accordingly
+
+const App = () => {
+  const tableData = [
+    {
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'john@example.com',
+      message: 'Hello there!',
+    },
+    // Add more data objects as needed
+  ];
+
+  return (
+    <div>
+      <h1>Table Example</h1>
+      <TableComponent data={tableData} />
+    </div>
+  );
+};
+
+export default App;
+Make sure to adjust the component and data according to your application's needs.
+
+
+
+
+User
+Generate business style CSS for this table
+
+ChatGPT
+Certainly! Here's a simple example of CSS that you can use to style the table component in a business-style manner:
+
+css
+Copy code
+/* App.css */
+
+/* Overall styling for the page */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Styling for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+}
+
+thead {
+  background-color: #f2f2f2;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+th {
+  font-weight: bold;
+}
+
+/* Highlight alternating rows */
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Hover effect for rows */
+tbody tr:hover {
+  background-color: #e0e0e0;
+}
+
+/* Center align text in the first column */
+td:first-child {
+  text-align: center;
+}
+
+/* Button styling */
+.button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+This CSS includes styling for the table itself, headers, cells, alternating row backgrounds, hover effects, and a simple button style. You can include this CSS in your project's stylesheet (e.g., App.css) and make any necessary adjustments to fit your design preferences.
