@@ -19,7 +19,6 @@ describe('Redux Store and Reducers', () => {
     store.dispatch(updateFormAction({ field: 'message', value: 'Hello, Redux!' }));
 
     const state = store.getState().form;
-    console.log(store.getState());
     expect(state.firstName).toEqual('John');
     expect(state.lastName).toEqual('Doe');
     expect(state.email).toEqual('john@example.com');
