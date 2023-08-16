@@ -33,6 +33,7 @@ function Form() {
     e.preventDefault();
     dispatch(addItem(formData));
     setFormData(initialState);
+    alert("Item has been added successfully!");
   };
 
   const validateForm = () => {
