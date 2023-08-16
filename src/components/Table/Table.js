@@ -14,8 +14,8 @@ const Table = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => (
-            <tr key={index}>
+          {data.map((item) => (
+            <tr key={item.firstName + item.lastName}>
               <td>{item.firstName}</td>
               <td>{item.lastName}</td>
               <td>{item.email}</td>
